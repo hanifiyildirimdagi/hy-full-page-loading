@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <hy-full-page-loading :loading="loading" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HyFullPageLoading from "./components/hy-full-page-loading.vue";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HyFullPageLoading
+  },
+  data : () => ({
+loading:false
+  }),
+  mounted(){
+    let that = this;
+    setTimeout(function(){
+      that.loading = true;
+      setTimeout(function(){
+        that.loading = false;
+      },2500);
+    },2500);
   }
 }
 </script>
